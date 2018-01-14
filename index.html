@@ -38,9 +38,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coastal <b class="caret"></b></a>
               <span class="dropdown-arrow"></span>
               <ul class="dropdown-menu">
-                <li><a href="#">Breakwater armour sizing (Hudson, 1959)</a></li>
-                <li><a href="#">Breaker index (Goda, 2010)</a></li>
-                <li><a href="#">Gravity wave dispersion (Hunt, 1979)</a></li>
+                <li><a data-toggle="tab" href="#menu1">Breakwater armour sizing (Hudson, 1959)</a></li>
+                <li><a data-toggle="tab" href="#menu2">Breaker index (Goda, 2010)</a></li>
+                <li><a data-toggle="tab" href="#menu3">Gravity wave dispersion (Hunt, 1979)</a></li>
               </ul>
             </li>
           </ul>
@@ -52,8 +52,20 @@
   </div>
   <!-- /row -->
 
-
-
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Some content.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Some content in menu 1.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Some content in menu 2.</p>
+    </div>
+  </div>
 
   <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
   <script src="js/vendor/jquery.min.js"></script>
