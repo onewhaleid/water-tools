@@ -14,11 +14,6 @@
 
   <link rel="shortcut icon" href="img/favicon.ico">
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-  <!--[if lt IE 9]>
-      <script src="js/vendor/html5shiv.js"></script>
-      <script src="js/vendor/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -56,10 +51,110 @@
     <div id="home" class="tab-pane fade in active">
       <h3>HOME</h3>
       <p>Some content.</p>
+      <input type="text" id="input1" onkeyup="matchInput()">
+      <input type="text" id="input2">
     </div>
     <div id="menu1" class="tab-pane fade">
-      <h3>Menu 1</h3>
-      <p>Some content in menu 1.</p>
+      <!--
+
+  ██   ██ ██    ██ ██████  ███████  ██████  ███    ██
+  ██   ██ ██    ██ ██   ██ ██      ██    ██ ████   ██
+  ███████ ██    ██ ██   ██ ███████ ██    ██ ██ ██  ██
+  ██   ██ ██    ██ ██   ██      ██ ██    ██ ██  ██ ██
+  ██   ██  ██████  ██████  ███████  ██████  ██   ████
+
+  -->
+      <h3>Hudson equation</h3>
+
+      <p>$$M =\frac{\rho_a {H_{10\%}}^3}{k_D \Delta^3\cot\theta}$$
+      </p>
+
+      <p>$$\Delta = \frac{\rho_a}{\rho_w} - 1$$
+      </p>
+
+      <form name="Hudson">
+        <table>
+          <tr>
+            <td>
+              <p>$M$</p>
+            </td>
+            <td>
+              <p>Armour mass:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="M" value="1000" tabindex="1" onkeyup="hudsonCalculateHeight(this.form)"> </td>
+            <td>
+              <p>(kg)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$H_{10\%}$</p>
+            </td>
+            <td>
+              <p>Wave height:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="H" value="2" tabindex="2" onkeyup="hudsonCalculateMass(this.form)"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$\rho_a$</p>
+            </td>
+            <td>
+              <p>Armour density:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="rho_a" value="2650" tabindex="3" onkeyup="hudsonCalculateMass(this.form)"> </td>
+            <td>
+              <p>(kg/m<sup>3</sup>)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$\rho_w$</p>
+            </td>
+            <td>
+              <p>Water density:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="rho_w" value="1025" tabindex="4" onkeyup="hudsonCalculateMass(this.form)"> </td>
+            <td>
+              <p>(kg/m<sup>3</sup>)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$k_D$</p>
+            </td>
+            <td>
+              <p>Stability coefficient:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="k_d" value="2" tabindex="5" onkeyup="hudsonCalculateMass(this.form)"> </td>
+            <td>
+              <p>(-)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$\cot \theta$ &nbsp </p>
+            </td>
+            <td>
+              <p>Slope:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="slope" value="1.5" tabindex="6" onkeyup="hudsonCalculateMass(this.form)"> </td>
+            <td>
+              <p>(H/V)</p>
+            </td>
+          </tr>
+        </table>
+      </form>
+
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>Menu 2</h3>
@@ -67,11 +162,9 @@
     </div>
   </div>
 
-  <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
   <script src="js/vendor/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/vendor/video.js"></script>
   <script src="js/flat-ui.min.js"></script>
+  <script src="js/calculators.js"></script>
 
 </body>
 
