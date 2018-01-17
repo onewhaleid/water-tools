@@ -35,7 +35,7 @@
               <ul class="dropdown-menu">
                 <li><a data-toggle="tab" href="#hudson">Breakwater armour sizing (Hudson, 1959)</a></li>
                 <li><a data-toggle="tab" href="#goda">Breaker index (Goda, 2010)</a></li>
-                <li><a data-toggle="tab" href="#menu3">Gravity wave dispersion (Hunt, 1979)</a></li>
+                <li><a data-toggle="tab" href="#hunt">Gravity wave dispersion (Hunt, 1979)</a></li>
               </ul>
             </li>
           </ul>
@@ -173,62 +173,156 @@
       </p>
 
       <form name="Goda">
-          <table>
-              <tr>
-                  <td>
-                      <p>$d_b$ &nbsp</p>
-                  </td>
-                  <td>
-                      <p>Water depth:</p>
-                  </td>
-                  <td>
-                      <input type="text" size="5" name="d_b" value="5" tabindex="7" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
-                  <td>
-                      <p>(m)</p>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <p>$T$</p>
-                  </td>
-                  <td>
-                      <p>Wave period:</p>
-                  </td>
-                  <td>
-                      <input type="text" size="5" name="T" value="10" tabindex="8" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
-                  <td>
-                      <p>(s)</p>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <p>$s$</p>
-                  </td>
-                  <td>
-                      <p>Slope:</p>
-                  </td>
-                  <td>
-                      <input type="text" size="5" name="s" value="0.01" tabindex="9" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
-                  <td>
-                      <p>(H/V)</p>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <p>$\gamma$</p>
-                  </td>
-                  <td>
-                      <p>Breaker index:</p>
-                  </td>
-                  <td>
-                      <input type="text" size="5" name="gamma" value="0.54" tabindex="10"> </td>
-                  <td>
-                      <p>(-)</p>
-                  </td>
-          </table>
+        <table>
+          <tr>
+            <td>
+              <p>$d_b$ &nbsp</p>
+            </td>
+            <td>
+              <p>Water depth:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="d_b" value="5" tabindex="1" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$T$</p>
+            </td>
+            <td>
+              <p>Wave period:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="T" value="10" tabindex="1" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+            <td>
+              <p>(s)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$s$</p>
+            </td>
+            <td>
+              <p>Slope:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="s" value="0.01" tabindex="3" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+            <td>
+              <p>(H/V)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$\gamma$</p>
+            </td>
+            <td>
+              <p>Breaker index:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="gamma" value="0.54" tabindex="4"> </td>
+            <td>
+              <p>(-)</p>
+            </td>
+        </table>
+      </form>
+    </div>
+
+    <div id="hunt" class="tab-pane fade">
+
+      <!--
+
+        ██   ██ ██    ██ ███    ██ ████████
+        ██   ██ ██    ██ ████   ██    ██
+        ███████ ██    ██ ██ ██  ██    ██
+        ██   ██ ██    ██ ██  ██ ██    ██
+        ██   ██  ██████  ██   ████    ██
+
+        -->
+
+      <h3>Hunt wave dispersion equation</h3>
+
+      <p>
+        $\omega = \frac{2 \pi}{T}$$ $$\omega^2 = g\, k\, \tanh(k\,h)$
+
+      </p>
+
+      <p>
+        $\Omega(k) = \sqrt{g \, k\, \tanh (k h)}$
+      </p>
+
+      <form name="Hunt wave dispersion equation">
+        <table>
+          <tr>
+            <td>
+              <p>$T$ &nbsp</p>
+            </td>
+            <td>
+              <p>Wave period:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="T" value="10" tabindex="11" onkeyup="huntCalculateWavelength(this.form)"> </td>
+            <td>
+              <p>(s)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$d$</p>
+            </td>
+            <td>
+              <p>Water depth:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="d" value="100" tabindex="12" onkeyup="huntCalculateWavelength(this.form)"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L$</p>
+            </td>
+            <td>
+              <p>Wavelength:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="L" value="155.8" tabindex="14" onkeyup="huntCalculateWavelength(this.form)"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$H_\text{max}$</p>
+            </td>
+            <td>
+              <p>Steepness-limited height:</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="H_max" value="22.3" tabindex="14"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            </td>
+            <td>
+              <p>Regime:</p>
+            </td>
+            <td>
+              <input type="text" size="12" name="regime" value="deep" tabindex="15"> </td>
+            <td>
+              <p></p>
+            </td>
+          </tr>
+        </table>
       </form>
 
     </div>
+
   </div>
 
   <script src="js/vendor/jquery.min.js"></script>
