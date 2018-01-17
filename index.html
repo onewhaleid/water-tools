@@ -33,8 +33,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Coastal <b class="caret"></b></a>
               <span class="dropdown-arrow"></span>
               <ul class="dropdown-menu">
-                <li><a data-toggle="tab" href="#menu1">Breakwater armour sizing (Hudson, 1959)</a></li>
-                <li><a data-toggle="tab" href="#menu2">Breaker index (Goda, 2010)</a></li>
+                <li><a data-toggle="tab" href="#hudson">Breakwater armour sizing (Hudson, 1959)</a></li>
+                <li><a data-toggle="tab" href="#goda">Breaker index (Goda, 2010)</a></li>
                 <li><a data-toggle="tab" href="#menu3">Gravity wave dispersion (Hunt, 1979)</a></li>
               </ul>
             </li>
@@ -49,12 +49,9 @@
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Some content.</p>
-      <input type="text" id="input1" onkeyup="matchInput()">
-      <input type="text" id="input2">
     </div>
-    <div id="menu1" class="tab-pane fade">
+
+    <div id="hudson" class="tab-pane fade">
       <!--
 
   ██   ██ ██    ██ ██████  ███████  ██████  ███    ██
@@ -66,10 +63,10 @@
   -->
       <h3>Hudson equation</h3>
 
-      <p>$$M =\frac{\rho_a {H_{10\%}}^3}{k_D \Delta^3\cot\theta}$$
+      <p>$M =\frac{\rho_a {H_{10\%}}^3}{k_D \Delta^3\cot\theta}$
       </p>
 
-      <p>$$\Delta = \frac{\rho_a}{\rho_w} - 1$$
+      <p>$\Delta = \frac{\rho_a}{\rho_w} - 1$
       </p>
 
       <form name="Hudson">
@@ -154,11 +151,83 @@
           </tr>
         </table>
       </form>
-
     </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Some content in menu 2.</p>
+
+    <div id="goda" class="tab-pane fade">
+      <!--
+
+       ██████   ██████  ██████   █████
+      ██       ██    ██ ██   ██ ██   ██
+      ██   ███ ██    ██ ██   ██ ███████
+      ██    ██ ██    ██ ██   ██ ██   ██
+       ██████   ██████  ██████  ██   ██
+
+      -->
+
+      <h3>Goda breaker index</h3>
+
+      <p>$\gamma = \frac{H_{b, 1/3}}{d_b} = \frac{0.12}{d_b / L_0} \left\{ 1 - \exp \left[ -1.5 \pi \frac{d_b}{L_0} (1 + 11 s^{4/3}) \right]\right\}$
+      </p>
+
+      <p>$L_0 = \frac{g T^2}{2 \pi}$
+      </p>
+
+      <form name="Goda">
+          <table>
+              <tr>
+                  <td>
+                      <p>$d_b$ &nbsp</p>
+                  </td>
+                  <td>
+                      <p>Water depth:</p>
+                  </td>
+                  <td>
+                      <input type="text" size="5" name="d_b" value="5" tabindex="7" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+                  <td>
+                      <p>(m)</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <p>$T$</p>
+                  </td>
+                  <td>
+                      <p>Wave period:</p>
+                  </td>
+                  <td>
+                      <input type="text" size="5" name="T" value="10" tabindex="8" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+                  <td>
+                      <p>(s)</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <p>$s$</p>
+                  </td>
+                  <td>
+                      <p>Slope:</p>
+                  </td>
+                  <td>
+                      <input type="text" size="5" name="s" value="0.01" tabindex="9" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+                  <td>
+                      <p>(H/V)</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <p>$\gamma$</p>
+                  </td>
+                  <td>
+                      <p>Breaker index:</p>
+                  </td>
+                  <td>
+                      <input type="text" size="5" name="gamma" value="0.54" tabindex="10"> </td>
+                  <td>
+                      <p>(-)</p>
+                  </td>
+          </table>
+      </form>
+
     </div>
   </div>
 
