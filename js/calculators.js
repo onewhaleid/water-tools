@@ -86,3 +86,11 @@ function froudeProtoToModel(form) {
   form.model_length.value = proto_length * Math.pow(length_scale, -length_exponent);
 
 }
+
+function froudeChangeLengthScale(form) {
+  if (form.model_proto_switch.checked) {
+    froudeModelToProto(form)
+  } else {
+    froudeProtoToModel(form)
+  }
+}

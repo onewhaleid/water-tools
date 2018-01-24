@@ -382,14 +382,14 @@
               <p>(-)</p>
             </td>
             <td>
-              <input type="text" name="L" value="10" tabindex="1"> </td>
+              <input type="text" name="L" value="10" tabindex="1" onkeyup="froudeChangeLengthScale(this.form)"> </td>
             <td>
               <p>(-)</p>
             </td>
             <td>
               <label for="switch">model</label>
               <label class="switch">
-                <input type="checkbox" id="switch">
+                <input type="checkbox" id="switch" name="model_proto_switch">
                 <span class="slider"></span>
               </label>
               <label for="switch">prototype</label>
@@ -426,12 +426,12 @@
               <p>Time:</p>
             </td>
             <td>
-              <input type="text" name="model_time"> </td>
+              <input type="text" name="model_time"  value="10" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
               <p>(s)</p>
             </td>
             <td>
-              <input type="text" name="proto_time"> </td>
+              <input type="text" name="proto_time"  value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
               <p>(s)</p>
             </td>
@@ -444,12 +444,12 @@
               <p>Mass:</p>
             </td>
             <td>
-              <input type="text"> </td>
+              <input type="text" name="model_mass"  value="1" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
               <p>(kg)</p>
             </td>
             <td>
-              <input type="text"> </td>
+              <input type="text" name="proto_mass"  value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
               <p>(kg)</p>
             </td>
