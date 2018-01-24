@@ -1,3 +1,12 @@
+td {
+    vertical-align: top;
+    padding: 0px 5px 0px 5px;
+}
+
+input {
+  width: 4em;
+}
+
 label, input {
     display: inline-block;
     vertical-align: middle;
