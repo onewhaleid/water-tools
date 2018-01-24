@@ -4,9 +4,9 @@ function hudsonCalculateHeight(form) {
   var rho_w = parseFloat(form.rho_w.value);
   var k_d = parseFloat(form.k_d.value);
   var slope = parseFloat(form.slope.value);
-  var delta = rho_a / rho_w - 1
+  var delta = rho_a / rho_w - 1;
 
-  result = Math.pow((M * k_d * Math.pow(delta, 3) * slope / rho_a), 1 / 3)
+  result = Math.pow((M * k_d * Math.pow(delta, 3) * slope / rho_a), 1 / 3);
   form.H.value = Math.round(result * 100) / 100;
 }
 
@@ -54,16 +54,35 @@ function huntCalculateWavelength(form) {
   var y2 = Math.pow(y, 2) + y / (1 + y1);
 
   var L_0 = 2 * pi * d / Math.sqrt(y2);
-  form.L.value = Math.round(L_0 * 10) / 10
-  form.H_max.value = Math.round(L_0 / 7 * 10) / 10
+  form.L.value = Math.round(L_0 * 10) / 10;
+  form.H_max.value = Math.round(L_0 / 7 * 10) / 10;
 
-  var depth_ratio = d / L_0
-  var regime = "intermediate"
+  var depth_ratio = d / L_0;
+  var regime = "intermediate";
   if (depth_ratio > 0.5) {
     regime = "deep";
   }
   if (depth_ratio < 0.05) {
     regime = "shallow";
   }
-  form.regime.value = regime
+  form.regime.value = regime;
+}
+
+var length_exponent = 1;
+var time_exponent = 1 / 2;
+var mass_exponent = 3;
+
+function froudeModelToProto(form) {
+  var length_scale = parseFloat(form.L.value);
+
+  var model_length = form.model_length.value;
+  form.proto_length.value = model_length * Math.pow(length_scale, length_exponent);
+}
+
+function froudeProtoToModel(form) {
+  var length_scale = parseFloat(form.L.value);
+
+  var proto_length = form.proto_length.value;
+  form.model_length.value = proto_length * Math.pow(length_scale, -length_exponent);
+
 }

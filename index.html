@@ -377,7 +377,7 @@
               <p>Length scale:</p>
             </td>
             <td>
-              <input type="text" name="L" value="1" disabled> </td>
+              <input type="text" value="1" disabled> </td>
             <td>
               <p>(-)</p>
             </td>
@@ -387,12 +387,12 @@
               <p>(-)</p>
             </td>
             <td>
-              <label for="switch"> model </label>
+              <label for="switch">model</label>
               <label class="switch">
                 <input type="checkbox" id="switch">
                 <span class="slider"></span>
               </label>
-              <label for="switch"> prototype  </label>
+              <label for="switch">prototype</label>
             </td>
           </tr>
           <tr>
@@ -408,12 +408,12 @@
               <p>Length:</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text"  name="model_length" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
               <p>(m)</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text"  name="proto_length" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
               <p>(m)</p>
             </td>
@@ -426,12 +426,12 @@
               <p>Time:</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text" name="model_time"> </td>
             <td>
               <p>(s)</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text" name="proto_time"> </td>
             <td>
               <p>(s)</p>
             </td>
@@ -444,12 +444,12 @@
               <p>Mass:</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text"> </td>
             <td>
               <p>(kg)</p>
             </td>
             <td>
-              <input type="text" size="5"> </td>
+              <input type="text"> </td>
             <td>
               <p>(kg)</p>
             </td>
