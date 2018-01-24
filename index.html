@@ -39,6 +39,14 @@
                 <li><a data-toggle="tab" href="#hunt">Gravity wave dispersion (Hunt, 1979)</a></li>
               </ul>
             </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scaling <b class="caret"></b></a>
+              <span class="dropdown-arrow"></span>
+              <ul class="dropdown-menu">
+                <li><a data-toggle="tab" href="#froude">Froude similarity</a></li>
+                <li><a data-toggle="tab" href="#sharp-khader">Armour mass in fresh water (Sharp & Khader, 1984)</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -50,12 +58,6 @@
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <label for="switch"> model </label>
-      <label class="switch">
-        <input type="checkbox" id="switch">
-        <span class="slider"></span>
-      </label>
-      <label for="switch"> prototype  </label>
     </div>
 
     <div id="hudson" class="tab-pane fade">
@@ -323,6 +325,114 @@
               <input type="text" size="10" name="regime" value="deep" disabled tabindex="5"> </td>
             <td>
               <p></p>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+    </div>
+
+
+
+    <div id="froude" class="tab-pane fade">
+
+      <h3>Froude similarity</h3>
+
+      <p>
+        $Fr = \frac{u}{\sqrt{g L}}$
+      </p>
+
+      <form name="Froude similarity">
+        <table>
+          <tr>
+            <td>
+              <p>$\lambda$ &nbsp &nbsp</p>
+            </td>
+            <td>
+              <p>Length scale: &nbsp &nbsp</p>
+            </td>
+            <td>
+              <input type="text" size="5" name="L" value="10" tabindex="1"> </td>
+            <td>
+              <p>&nbsp (-)</p>
+            </td>
+          </tr>
+        </table>
+
+        <label for="switch"> model </label>
+        <label class="switch">
+          <input type="checkbox" id="switch">
+          <span class="slider"></span>
+        </label>
+        <label for="switch"> prototype  </label>
+
+        <table>
+          <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+              <p>Model</p>
+            </td>
+            <td>
+            </td>
+            <td>
+              <p>Prototype</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L = \lambda$</p>
+            </td>
+            <td>
+              <p>Length:</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(m)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$T = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>Time:</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(s)</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(s)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$M = \lambda^{3}$</p>
+            </td>
+            <td>
+              <p>Mass:</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(kg)</p>
+            </td>
+            <td>
+              <input type="text" size="5"> </td>
+            <td>
+              <p>(kg  )</p>
             </td>
           </tr>
         </table>
