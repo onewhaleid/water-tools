@@ -412,7 +412,7 @@
             <td>
               <select name="model_length_unit" onchange="froudeProtoToModel(this.form)">
                 <option value="mm">mm</option>
-                <option value="m">m</option>
+                <option value="m" selected>m</option>
                 <option value="km">km</option>
               </select> </td>
             <td>
@@ -420,7 +420,7 @@
             <td>
               <select name="proto_length_unit" onchange="froudeModelToProto(this.form)">
                   <option value="mm">mm</option>
-                  <option value="m">m</option>
+                  <option value="m" selected>m</option>
                   <option value="km">km</option>
                 </select> </td>
           </tr>
@@ -434,13 +434,19 @@
             <td>
               <input type="text" name="model_time" value="10" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
-              <p>(s)</p>
-            </td>
+              <select name="model_time_unit" onchange="froudeProtoToModel(this.form)">
+                <option value="s" selected>s</option>
+                <option value="min">min</option>
+                <option value="h">h</option>
+              </select> </td>
             <td>
               <input type="text" name="proto_time" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
-              <p>(s)</p>
-            </td>
+              <select name="proto_time_unit" onchange="froudeModelToProto(this.form)">
+                <option value="s" selected>s</option>
+                <option value="min">min</option>
+                <option value="h">h</option>
+              </select> </td>
           </tr>
           <tr>
             <td>
@@ -451,14 +457,20 @@
             </td>
             <td>
               <input type="text" name="model_mass" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
-            <td>
-              <p>(kg)</p>
-            </td>
+              <td>
+                <select name="model_mass_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="g">g</option>
+                  <option value="kg" selected>kg</option>
+                  <option value="t">t</option>
+                </select> </td>
             <td>
               <input type="text" name="proto_mass" value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
-            <td>
-              <p>(kg)</p>
-            </td>
+              <td>
+                <select name="proto_mass_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="g">g</option>
+                  <option value="kg" selected>kg</option>
+                  <option value="t">t</option>
+                </select> </td>
           </tr>
         </table>
       </form>

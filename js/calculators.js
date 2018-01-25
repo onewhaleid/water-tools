@@ -78,11 +78,13 @@ function froudeModelToProto(form) {
   var model_length = toBaseUnit(form.model_length.value, form.model_length_unit.value);
   form.proto_length.value = toDisplayUnit(model_length * Math.pow(length_scale, length_exponent), form.proto_length_unit.value);
 
-  var model_time = form.model_time.value;
-  form.proto_time.value = model_time * Math.pow(length_scale, time_exponent);
+  var model_time = toBaseUnit(form.model_time.value, form.model_time_unit.value);
+  form.proto_time.value = toDisplayUnit(model_time * Math.pow(length_scale, time_exponent), form.proto_time_unit.value);
 
-  var model_mass = form.model_mass.value;
-  form.proto_mass.value = model_mass * Math.pow(length_scale, mass_exponent);
+  var model_mass = toBaseUnit(form.model_mass.value, form.model_mass_unit.value);
+  form.proto_mass.value = toDisplayUnit(model_mass * Math.pow(length_scale, mass_exponent), form.proto_mass_unit.value);
+
+  roundAllInputs(form);
 };
 
 function froudeProtoToModel(form) {
@@ -91,11 +93,13 @@ function froudeProtoToModel(form) {
   var proto_length = toBaseUnit(form.proto_length.value, form.proto_length_unit.value);
   form.model_length.value = toDisplayUnit(proto_length * Math.pow(length_scale, -length_exponent), form.model_length_unit.value);
 
-  var proto_time = form.proto_time.value;
-  form.model_time.value = proto_time * Math.pow(length_scale, -time_exponent);
+  var proto_time = toBaseUnit(form.proto_time.value, form.proto_time_unit.value);
+  form.model_time.value = toDisplayUnit(proto_time * Math.pow(length_scale, -time_exponent), form.model_time_unit.value);
 
-  var proto_mass = form.proto_mass.value;
-  form.model_mass.value = proto_mass * Math.pow(length_scale, -mass_exponent);
+  var proto_mass = toBaseUnit(form.proto_mass.value, form.proto_mass_unit.value);
+  form.model_mass.value = toDisplayUnit(proto_mass * Math.pow(length_scale, -mass_exponent), form.model_mass_unit.value);
+
+  roundAllInputs(form);
 };
 
 function froudeChangeLengthScale(form) {
