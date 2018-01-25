@@ -13,7 +13,7 @@
   <link href="css/flat-ui.min.css" rel="stylesheet">
   <link href="css/extras.css" rel="stylesheet">
 
-  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.png">
 
 </head>
 
@@ -408,15 +408,21 @@
               <p>Length:</p>
             </td>
             <td>
-              <input type="text"  name="model_length" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <input type="text" name="model_length" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
-              <p>(m)</p>
-            </td>
+              <select name="model_length_unit" onchange="froudeProtoToModel(this.form)">
+                <option value="mm">mm</option>
+                <option value="m">m</option>
+                <option value="km">km</option>
+              </select> </td>
             <td>
-              <input type="text"  name="proto_length" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <input type="text" name="proto_length" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
-              <p>(m)</p>
-            </td>
+              <select name="proto_length_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="mm">mm</option>
+                  <option value="m">m</option>
+                  <option value="km">km</option>
+                </select> </td>
           </tr>
           <tr>
             <td>
@@ -426,12 +432,12 @@
               <p>Time:</p>
             </td>
             <td>
-              <input type="text" name="model_time"  value="10" onkeyup="froudeModelToProto(this.form)"> </td>
+              <input type="text" name="model_time" value="10" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
               <p>(s)</p>
             </td>
             <td>
-              <input type="text" name="proto_time"  value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <input type="text" name="proto_time" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
               <p>(s)</p>
             </td>
@@ -444,12 +450,12 @@
               <p>Mass:</p>
             </td>
             <td>
-              <input type="text" name="model_mass"  value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <input type="text" name="model_mass" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
             <td>
               <p>(kg)</p>
             </td>
             <td>
-              <input type="text" name="proto_mass"  value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <input type="text" name="proto_mass" value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
               <p>(kg)</p>
             </td>

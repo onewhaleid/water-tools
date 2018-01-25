@@ -8,7 +8,7 @@ function hudsonCalculateHeight(form) {
 
   result = Math.pow((M * k_d * Math.pow(delta, 3) * slope / rho_a), 1 / 3);
   form.H.value = Math.round(result * 100) / 100;
-}
+};
 
 function hudsonCalculateMass(form) {
   var H = parseFloat(form.H.value);
@@ -20,7 +20,7 @@ function hudsonCalculateMass(form) {
 
   result = rho_a * Math.pow(H, 3) / (k_d * Math.pow(delta, 3) * slope);
   form.M.value = Math.round(result);
-}
+};
 
 function godaCalculateBreakerIndex(form) {
   var T = parseFloat(form.T.value);
@@ -32,7 +32,7 @@ function godaCalculateBreakerIndex(form) {
 
   var result = 0.12 / (d_b / L_0) * (1 - Math.exp(-1.5 * pi * (d_b / L_0) * (1 + 11 * Math.pow(s, 4 / 3))));
   form.gamma.value = Math.round(result * 100) / 100;
-}
+};
 
 function huntCalculateWavelength(form) {
   var T = parseFloat(form.T.value);
@@ -66,7 +66,7 @@ function huntCalculateWavelength(form) {
     regime = "shallow";
   }
   form.regime.value = regime;
-}
+};
 
 var length_exponent = 1;
 var time_exponent = 1 / 2;
@@ -75,22 +75,53 @@ var mass_exponent = 3;
 function froudeModelToProto(form) {
   var length_scale = parseFloat(form.L.value);
 
-  var model_length = form.model_length.value;
-  form.proto_length.value = model_length * Math.pow(length_scale, length_exponent);
-}
+  var model_length = toBaseUnit(form.model_length.value, form.model_length_unit.value);
+  form.proto_length.value = toDisplayUnit(model_length * Math.pow(length_scale, length_exponent), form.proto_length_unit.value);
+
+  var model_time = form.model_time.value;
+  form.proto_time.value = model_time * Math.pow(length_scale, time_exponent);
+
+  var model_mass = form.model_mass.value;
+  form.proto_mass.value = model_mass * Math.pow(length_scale, mass_exponent);
+};
 
 function froudeProtoToModel(form) {
   var length_scale = parseFloat(form.L.value);
 
-  var proto_length = form.proto_length.value;
-  form.model_length.value = proto_length * Math.pow(length_scale, -length_exponent);
+  var proto_length = toBaseUnit(form.proto_length.value, form.proto_length_unit.value);
+  form.model_length.value = toDisplayUnit(proto_length * Math.pow(length_scale, -length_exponent), form.model_length_unit.value);
 
-}
+  var proto_time = form.proto_time.value;
+  form.model_time.value = proto_time * Math.pow(length_scale, -time_exponent);
+
+  var proto_mass = form.proto_mass.value;
+  form.model_mass.value = proto_mass * Math.pow(length_scale, -mass_exponent);
+};
 
 function froudeChangeLengthScale(form) {
   if (form.model_proto_switch.checked) {
-    froudeModelToProto(form)
+    froudeModelToProto(form);
   } else {
-    froudeProtoToModel(form)
+    froudeProtoToModel(form);
   }
-}
+};
+
+var conversion_factors = {
+  'mm': 1000,
+  'm': 1,
+  'km': 1 / 1000,
+  's': 1,
+  'min': 1 / 60,
+  'h': 1 / 60 / 60,
+  'g': 1000,
+  'kg': 1,
+  't': 1 / 1000,
+};
+
+function toBaseUnit(val, from_unit) {
+  return val / conversion_factors[from_unit]
+};
+
+function toDisplayUnit(val, from_unit) {
+  return val * conversion_factors[from_unit]
+};
