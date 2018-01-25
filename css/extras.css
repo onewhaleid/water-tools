@@ -3,8 +3,8 @@ td {
     padding: 0px 5px 0px 5px;
 }
 
-input {
-  width: 4em;
+.form-control, input {
+  width: 5em;
 }
 
 label, input {
