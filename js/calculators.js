@@ -129,3 +129,12 @@ function toBaseUnit(val, from_unit) {
 function toDisplayUnit(val, from_unit) {
   return val * conversion_factors[from_unit]
 };
+
+function roundAllInputs(form) {
+  var elements = form.elements;
+  for (i = 0; i < elements.length; i++) {
+    if (elements[i].type === 'text') {
+      elements[i].value = Math.round(parseFloat(elements[i].value) * 100) / 100;
+    }
+  }
+}
