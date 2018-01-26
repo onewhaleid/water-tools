@@ -349,7 +349,7 @@
       </p>
 
       <form name="Froude similarity">
-        <table>
+        <table id="froude-table">
           <tr>
             <td>
             </td>
@@ -357,6 +357,8 @@
             </td>
             <td>
               <p>Model</p>
+            </td>
+            <td>
             </td>
             <td>
             </td>
@@ -380,6 +382,9 @@
               <input class="form-control" type="text" value="1" disabled> </td>
             <td>
               <p>(-)</p>
+            </td>
+            <td>
+              &nbsp &nbsp &nbsp
             </td>
             <td>
               <input class="form-control" type="text" name="L" value="10" tabindex="1" onkeyup="froudeChangeLengthScale(this.form)"> </td>
@@ -415,6 +420,8 @@
                 <option value="m" selected>m</option>
                 <option value="km">km</option>
               </select> </td>
+              <td>
+              </td>
             <td>
               <input class="form-control" type="text" name="proto_length" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
@@ -439,6 +446,8 @@
                 <option value="min">min</option>
                 <option value="h">h</option>
               </select> </td>
+              <td>
+              </td>
             <td>
               <input class="form-control" type="text" name="proto_time" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
             <td>
@@ -463,6 +472,8 @@
                   <option value="kg" selected>kg</option>
                   <option value="t">t</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_mass" value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -487,6 +498,8 @@
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_velocity" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -510,6 +523,8 @@
                   <option value="cm/s/s">cm/s/s</option>
                   <option value="m/s/s" selected>m/s/s</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_acceleration" value="9.81" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -533,6 +548,8 @@
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_pressure" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -557,6 +574,8 @@
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_force" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -581,6 +600,8 @@
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_spectral_energy" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
@@ -605,6 +626,8 @@
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
                 </select> </td>
+                <td>
+                </td>
             <td>
               <input class="form-control" type="text" name="proto_overtopping" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
