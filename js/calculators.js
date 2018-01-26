@@ -72,6 +72,7 @@ var length_exponent = 1;
 var time_exponent = 1 / 2;
 var mass_exponent = 3;
 var velocity_exponent = 1 / 2;
+var acceleration_exponent = 0;
 
 function froudeModelToProto(form) {
   var length_scale = parseFloat(form.L.value);
@@ -87,6 +88,9 @@ function froudeModelToProto(form) {
 
   var model_velocity = toBaseUnit(form.model_velocity.value, form.model_velocity_unit.value);
   form.proto_velocity.value = toDisplayUnit(model_velocity * Math.pow(length_scale, velocity_exponent), form.proto_velocity_unit.value);
+
+  var model_acceleration = toBaseUnit(form.model_acceleration.value, form.model_acceleration_unit.value);
+  form.proto_acceleration.value = toDisplayUnit(model_acceleration * Math.pow(length_scale, acceleration_exponent), form.proto_acceleration_unit.value);
 
   roundAllInputs(form);
 };
@@ -105,6 +109,9 @@ function froudeProtoToModel(form) {
 
   var proto_velocity = toBaseUnit(form.proto_velocity.value, form.proto_velocity_unit.value);
   form.model_velocity.value = toDisplayUnit(proto_velocity * Math.pow(length_scale, -velocity_exponent), form.model_velocity_unit.value);
+
+  var proto_acceleration = toBaseUnit(form.proto_acceleration.value, form.proto_acceleration_unit.value);
+  form.model_acceleration.value = toDisplayUnit(proto_acceleration * Math.pow(length_scale, -acceleration_exponent), form.model_acceleration_unit.value);
 
   roundAllInputs(form);
 };
@@ -130,6 +137,8 @@ var conversion_factors = {
   'cm/s': 100,
   'm/s': 1,
   'km/h': 1 / 1000 * 60 * 60,
+  'cm/s/s': 100,
+  'm/s/s': 1,
 };
 
 function toBaseUnit(val, from_unit) {

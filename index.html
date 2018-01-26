@@ -474,7 +474,7 @@
           </tr>
           <tr>
             <td>
-              <p>$L_R/T_R = \lambda^{1/2}$</p>
+              <p>$\frac{L_R}{T_R} = \lambda^{1/2}$</p>
             </td>
             <td>
               <p>Velocity:</p>
@@ -491,6 +491,124 @@
               <input class="form-control" type="text" name="proto_velocity" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
               <td>
                 <select name="proto_velocity_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$\frac{L_R}{T_R^2} = \lambda^0 ~~~$</p>
+            </td>
+            <td>
+              <p>Acceleration:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_acceleration" value="9.81" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_acceleration_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s/s">cm/s/s</option>
+                  <option value="m/s/s" selected>m/s/s</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_acceleration" value="9.81" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_acceleration_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s/s">cm/s/s</option>
+                  <option value="m/s/s" selected>m/s/s</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L_R/T_R = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>pressure:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_pressure" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_pressure_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_pressure" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_pressure_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L_R/T_R = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>force:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_force" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_force_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_force" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_force_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L_R/T_R = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>spectral_energy:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_spectral_energy" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_spectral_energy_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_spectral_energy" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_spectral_energy_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L_R/T_R = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>overtopping:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_overtopping" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_overtopping_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_overtopping" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_overtopping_unit" onchange="froudeModelToProto(this.form)">
                   <option value="cm/s">cm/s</option>
                   <option value="m/s" selected>m/s</option>
                   <option value="km/h">km/h</option>
