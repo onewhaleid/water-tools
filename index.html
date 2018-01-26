@@ -371,7 +371,7 @@
           </tr>
           <tr>
             <td>
-              <p>$\lambda$</p>
+              <p>$\lambda ~~~~$</p>
             </td>
             <td>
               <p>Length scale:</p>
@@ -402,7 +402,7 @@
           </tr>
           <tr>
             <td>
-              <p>$L = \lambda$</p>
+              <p>$L_R = \lambda ~~~~$</p>
             </td>
             <td>
               <p>Length:</p>
@@ -426,7 +426,7 @@
           </tr>
           <tr>
             <td>
-              <p>$T = \lambda^{1/2}$</p>
+              <p>$T_R = \lambda^{1/2}$</p>
             </td>
             <td>
               <p>Time:</p>
@@ -450,7 +450,7 @@
           </tr>
           <tr>
             <td>
-              <p>$M = \lambda^{3}$</p>
+              <p>$M_R = \lambda^{3} ~~~$</p>
             </td>
             <td>
               <p>Mass:</p>
@@ -470,6 +470,30 @@
                   <option value="g">g</option>
                   <option value="kg" selected>kg</option>
                   <option value="t">t</option>
+                </select> </td>
+          </tr>
+          <tr>
+            <td>
+              <p>$L_R/T_R = \lambda^{1/2}$</p>
+            </td>
+            <td>
+              <p>Velocity:</p>
+            </td>
+            <td>
+              <input class="form-control" type="text" name="model_velocity" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+              <td>
+                <select name="model_velocity_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
+                </select> </td>
+            <td>
+              <input class="form-control" type="text" name="proto_velocity" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+              <td>
+                <select name="proto_velocity_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="cm/s">cm/s</option>
+                  <option value="m/s" selected>m/s</option>
+                  <option value="km/h">km/h</option>
                 </select> </td>
           </tr>
         </table>

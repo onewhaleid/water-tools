@@ -71,6 +71,7 @@ function huntCalculateWavelength(form) {
 var length_exponent = 1;
 var time_exponent = 1 / 2;
 var mass_exponent = 3;
+var velocity_exponent = 1 / 2;
 
 function froudeModelToProto(form) {
   var length_scale = parseFloat(form.L.value);
@@ -83,6 +84,9 @@ function froudeModelToProto(form) {
 
   var model_mass = toBaseUnit(form.model_mass.value, form.model_mass_unit.value);
   form.proto_mass.value = toDisplayUnit(model_mass * Math.pow(length_scale, mass_exponent), form.proto_mass_unit.value);
+
+  var model_velocity = toBaseUnit(form.model_velocity.value, form.model_velocity_unit.value);
+  form.proto_velocity.value = toDisplayUnit(model_velocity * Math.pow(length_scale, velocity_exponent), form.proto_velocity_unit.value);
 
   roundAllInputs(form);
 };
@@ -98,6 +102,9 @@ function froudeProtoToModel(form) {
 
   var proto_mass = toBaseUnit(form.proto_mass.value, form.proto_mass_unit.value);
   form.model_mass.value = toDisplayUnit(proto_mass * Math.pow(length_scale, -mass_exponent), form.model_mass_unit.value);
+
+  var proto_velocity = toBaseUnit(form.proto_velocity.value, form.proto_velocity_unit.value);
+  form.model_velocity.value = toDisplayUnit(proto_velocity * Math.pow(length_scale, -velocity_exponent), form.model_velocity_unit.value);
 
   roundAllInputs(form);
 };
@@ -120,6 +127,9 @@ var conversion_factors = {
   'g': 1000,
   'kg': 1,
   't': 1 / 1000,
+  'cm/s': 100,
+  'm/s': 1,
+  'km/h': 1 / 1000 * 60 * 60,
 };
 
 function toBaseUnit(val, from_unit) {

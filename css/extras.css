@@ -3,13 +3,19 @@ input[type="text"]:disabled {
     opacity: 1;
 }
 
+
 td {
     vertical-align: top;
     padding: 0px 5px 0px 5px;
 }
 
+td:first-child {
+  text-align: right;
+}
+
 .form-control, input {
   width: 5em;
+  text-align: right;
 }
 
 label, input {
