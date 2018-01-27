@@ -73,6 +73,10 @@ var time_exponent = 1 / 2;
 var mass_exponent = 3;
 var velocity_exponent = 1 / 2;
 var acceleration_exponent = 0;
+var pressure_exponent = 1;
+var force_exponent = 3;
+var overtopping_exponent = 3 / 2;
+var spectral_energy_exponent = 5 / 2;
 
 function froudeModelToProto(form) {
   var length_scale = parseFloat(form.L.value);
@@ -91,6 +95,18 @@ function froudeModelToProto(form) {
 
   var model_acceleration = toBaseUnit(form.model_acceleration.value, form.model_acceleration_unit.value);
   form.proto_acceleration.value = toDisplayUnit(model_acceleration * Math.pow(length_scale, acceleration_exponent), form.proto_acceleration_unit.value);
+
+  var model_pressure = toBaseUnit(form.model_pressure.value, form.model_pressure_unit.value);
+  form.proto_pressure.value = toDisplayUnit(model_pressure * Math.pow(length_scale, pressure_exponent), form.proto_pressure_unit.value);
+
+  var model_force = toBaseUnit(form.model_force.value, form.model_force_unit.value);
+  form.proto_force.value = toDisplayUnit(model_force * Math.pow(length_scale, force_exponent), form.proto_force_unit.value);
+
+  var model_overtopping = toBaseUnit(form.model_overtopping.value, form.model_overtopping_unit.value);
+  form.proto_overtopping.value = toDisplayUnit(model_overtopping * Math.pow(length_scale, overtopping_exponent), form.proto_overtopping_unit.value);
+
+  var model_spectral_energy = toBaseUnit(form.model_spectral_energy.value, form.model_spectral_energy_unit.value);
+  form.proto_spectral_energy.value = toDisplayUnit(model_spectral_energy * Math.pow(length_scale, spectral_energy_exponent), form.proto_spectral_energy_unit.value);
 
   roundAllInputs(form);
 };
@@ -112,6 +128,18 @@ function froudeProtoToModel(form) {
 
   var proto_acceleration = toBaseUnit(form.proto_acceleration.value, form.proto_acceleration_unit.value);
   form.model_acceleration.value = toDisplayUnit(proto_acceleration * Math.pow(length_scale, -acceleration_exponent), form.model_acceleration_unit.value);
+
+  var proto_pressure = toBaseUnit(form.proto_pressure.value, form.proto_pressure_unit.value);
+  form.model_pressure.value = toDisplayUnit(proto_pressure * Math.pow(length_scale, -pressure_exponent), form.model_pressure_unit.value);
+
+  var proto_force = toBaseUnit(form.proto_force.value, form.proto_force_unit.value);
+  form.model_force.value = toDisplayUnit(proto_force * Math.pow(length_scale, -force_exponent), form.model_force_unit.value);
+
+  var proto_overtopping = toBaseUnit(form.proto_overtopping.value, form.proto_overtopping_unit.value);
+  form.model_overtopping.value = toDisplayUnit(proto_overtopping * Math.pow(length_scale, -overtopping_exponent), form.model_overtopping_unit.value);
+
+  var proto_spectral_energy = toBaseUnit(form.proto_spectral_energy.value, form.proto_spectral_energy_unit.value);
+  form.model_spectral_energy.value = toDisplayUnit(proto_spectral_energy * Math.pow(length_scale, -spectral_energy_exponent), form.model_spectral_energy_unit.value);
 
   roundAllInputs(form);
 };
@@ -139,6 +167,14 @@ var conversion_factors = {
   'km/h': 1 / 1000 * 60 * 60,
   'cm/s/s': 100,
   'm/s/s': 1,
+  'Pa': 1,
+  'kPa': 1000,
+  'MPa': 1000 * 1000,
+  'N': 1,
+  'kN': 1 / 1000,
+  'L/m/s': 1,
+  'mm.mm.s': 1000 * 1000,
+  'm.m.s': 1,
 };
 
 function toBaseUnit(val, from_unit) {
@@ -152,7 +188,7 @@ function toDisplayUnit(val, from_unit) {
 function roundAllInputs(form) {
   var elements = form.elements;
   for (i = 0; i < elements.length; i++) {
-    if (elements[i].type === 'text') {
+    if ((elements[i].type === 'text') & (elements[i].id !== 'length-scale')) {
       elements[i].value = Math.round(parseFloat(elements[i].value) * 100) / 100;
     }
   }
