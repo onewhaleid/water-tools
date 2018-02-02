@@ -188,10 +188,11 @@ function toDisplayUnit(val, from_unit) {
 function roundAllInputs(form) {
   var elements = form.elements;
   for (i = 0; i < elements.length; i++) {
-    // Don't round scale
-    if (elements[i].id === 'length-scale') {
+    // Don't round active element
+    if (elements[i] === document.activeElement) {
       continue;
     } else if (elements[i].type === 'text') {
+      // Round to 2 decimal places
       elements[i].value = Math.round(parseFloat(elements[i].value) * 100) / 100;
     }
   }
