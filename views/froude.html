@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>water-tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="../css/kickstart.min.css" rel="stylesheet">
+  <link href="../css/extras.css" rel="stylesheet">
+  <link href="../img/favicon.png" rel="shortcut icon">
+  <script src="../js/kickstart.min.js"></script>
+  <script src="../js/calculators.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true } });
+  </script>
+
+  <div data-ks-navbar class="navbar">
+    <nav>
+      <ul>
+        <li class="navbar-title">
+          <h1>water-tools</h1>
+          <button role="button">=</button>
+        </li>
+        <li class="active">Waves
+          <ul>
+            <li><a href="hunt.html">Gravity wave dispersion (Hunt, 1979)</a></li>
+            <li><a href="goda.html">Breaker index (Goda, 2010)</a></li>
+          </ul>
+        </li>
+        <li class="active">Armour
+          <ul>
+            <li><a href="hudson.html">Breakwater armour sizing (Hudson, 1959)</a></li>
+            <li><a href="sharp-khader.html">Armour mass in fresh water (Sharp & Khader, 1984)</a></li>
+          </ul>
+        </li>
+        <li class="active">Scaling
+          <ul>
+            <li><a href="froude.html">Froude similarity</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</head>
+
+<body>
+  <div id="froude">
+    <h3>Froude similarity</h3>
+
+    <p>
+      $Fr = \frac{u}{\sqrt{g L}}$
+    </p>
+
+    <form name="Froude similarity">
+      <table id="froude-table">
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <p>Model</p>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <p>Prototype</p>
+          </td>
+          <td>
+          </td>
+          <td>
+            <p>Recalculate values for:</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\lambda ~~~~$</p>
+          </td>
+          <td>
+            <p>Length scale:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" value="1" disabled> </td>
+          <td>
+            <p>(-)</p>
+          </td>
+          <td>
+            &nbsp &nbsp &nbsp
+          </td>
+          <td>
+            <input class="form-control" type="text" name="L" value="10" id="length-scale" onkeyup="froudeChangeLengthScale(this.form)"> </td>
+          <td>
+            <p>(-)</p>
+          </td>
+          <td>
+            <label for="switch">model</label>
+            <label class="switch">
+                  <input type="checkbox" id="switch" name="model_proto_switch">
+                  <span class="slider"></span>
+                </label>
+            <label for="switch">prototype</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$L_R = \lambda ~~~~$</p>
+          </td>
+          <td>
+            <p>Length:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_length" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_length_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="mm">mm</option>
+                  <option value="m" selected>m</option>
+                  <option value="km">km</option>
+                </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_length" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_length_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="mm">mm</option>
+                    <option value="m" selected>m</option>
+                    <option value="km">km</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$T_R = \lambda^{1/2}$</p>
+          </td>
+          <td>
+            <p>Time:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_time" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_time_unit" onchange="froudeProtoToModel(this.form)">
+                  <option value="s" selected>s</option>
+                  <option value="min">min</option>
+                  <option value="h">h</option>
+                </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_time" value="3.16" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_time_unit" onchange="froudeModelToProto(this.form)">
+                  <option value="s" selected>s</option>
+                  <option value="min">min</option>
+                  <option value="h">h</option>
+                </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$M_R = \lambda^{3} ~~~$</p>
+          </td>
+          <td>
+            <p>Mass:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_mass" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_mass_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="g">g</option>
+                    <option value="kg" selected>kg</option>
+                    <option value="t">t</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_mass" value="1000" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_mass_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="g">g</option>
+                    <option value="kg" selected>kg</option>
+                    <option value="t">t</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\frac{L_R}{T_R} = \lambda^{1/2}$</p>
+          </td>
+          <td>
+            <p>Velocity:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_velocity" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_velocity_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="cm/s">cm/s</option>
+                    <option value="m/s" selected>m/s</option>
+                    <option value="km/h">km/h</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_velocity" value="3" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_velocity_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="cm/s">cm/s</option>
+                    <option value="m/s" selected>m/s</option>
+                    <option value="km/h">km/h</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\frac{L_R}{T_R^2} = \lambda^0 ~~~$</p>
+          </td>
+          <td>
+            <p>Acceleration:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_acceleration" value="9.81" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_acceleration_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="cm/s/s">cm/s²</option>
+                    <option value="m/s/s" selected>m/s²</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_acceleration" value="9.81" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_acceleration_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="cm/s/s">cm/s²</option>
+                    <option value="m/s/s" selected>m/s²</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\frac{M_R}{L_R^2} = \lambda^{1} ~~~$</p>
+          </td>
+          <td>
+            <p>Pressure:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_pressure" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_pressure_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="Pa">Pa</option>
+                    <option value="kPa" selected>kPa</option>
+                    <option value="MPa">MPa</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_pressure" value="10" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_pressure_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="Pa">Pa</option>
+                    <option value="kPa" selected>kPa</option>
+                    <option value="MPa">MPa</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\frac{M_R L_R}{T_R^2} = \lambda^{3} ~~~$</p>
+          </td>
+          <td>
+            <p>Force:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_force" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_force_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="N" selected>N</option>
+                    <option value="kN">kN</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_force" value="1" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_force_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="N">N</option>
+                    <option value="kN" selected>kN</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\frac{L_R^2}{T_R} = \lambda^{3/2}$</p>
+          </td>
+          <td>
+            <p>Overtopping:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_overtopping" value="1" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_overtopping_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="L/m/s" selected>L/m/s</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_overtopping" value="31.62" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_overtopping_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="L/m/s" selected>L/m/s</option>
+                  </select> </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$L_R^2 T_R = \lambda^{5/2}$</p>
+          </td>
+          <td>
+            <p>Spectral energy:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="model_spectral_energy" value="1000" onkeyup="froudeModelToProto(this.form)"> </td>
+          <td>
+            <select name="model_spectral_energy_unit" onchange="froudeProtoToModel(this.form)">
+                    <option value="mm.mm.s" selected>mm².s</option>
+                    <option value="m.m.s">m².s</option>
+                  </select> </td>
+          <td>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="proto_spectral_energy" value="0.32" onkeyup="froudeProtoToModel(this.form)"> </td>
+          <td>
+            <select name="proto_spectral_energy_unit" onchange="froudeModelToProto(this.form)">
+                    <option value="mm.mm.s">mm².s</option>
+                    <option value="m.m.s" selected>m².s</option>
+                  </select> </td>
+        </tr>
+      </table>
+    </form>
+
+  </div>
+</body>
+
+</html>

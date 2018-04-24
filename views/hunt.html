@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>water-tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="../css/kickstart.min.css" rel="stylesheet">
+  <link href="../css/extras.css" rel="stylesheet">
+  <link href="../img/favicon.png" rel="shortcut icon">
+  <script src="../js/kickstart.min.js"></script>
+  <script src="../js/calculators.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true } });
+  </script>
+
+  <div data-ks-navbar class="navbar">
+    <nav>
+      <ul>
+        <li class="navbar-title">
+          <h1>water-tools</h1>
+          <button role="button">=</button>
+        </li>
+        <li class="active">Waves
+          <ul>
+            <li><a href="hunt.html">Gravity wave dispersion (Hunt, 1979)</a></li>
+            <li><a href="goda.html">Breaker index (Goda, 2010)</a></li>
+          </ul>
+        </li>
+        <li class="active">Armour
+          <ul>
+            <li><a href="hudson.html">Breakwater armour sizing (Hudson, 1959)</a></li>
+            <li><a href="sharp-khader.html">Armour mass in fresh water (Sharp & Khader, 1984)</a></li>
+          </ul>
+        </li>
+        <li class="active">Scaling
+          <ul>
+            <li><a href="froude.html">Froude similarity</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</head>
+
+<body>
+  <div id="hunt">
+    <h3>Hunt wave dispersion equation</h3>
+
+    <p>
+      $\omega = \frac{2 \pi}{T}$$ $$\omega^2 = g\, k\, \tanh(k\,h)$
+
+    </p>
+
+    <p>
+      $\Omega(k) = \sqrt{g \, k\, \tanh (k h)}$
+    </p>
+
+    <form name="Hunt wave dispersion equation">
+      <table>
+        <tr>
+          <td>
+            <p>$T$ &nbsp</p>
+          </td>
+          <td>
+            <p>Wave period:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="T" value="10" tabindex="1" onkeyup="huntCalculateWavelength(this.form)"> </td>
+          <td>
+            <p>(s)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$d$</p>
+          </td>
+          <td>
+            <p>Water depth:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="d" value="100" tabindex="2" onkeyup="huntCalculateWavelength(this.form)"> </td>
+          <td>
+            <p>(m)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$L$</p>
+          </td>
+          <td>
+            <p>Wavelength:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="L" value="155.8" disabled tabindex="3" onkeyup="huntCalculateWavelength(this.form)"> </td>
+          <td>
+            <p>(m)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$H_\text{max}$</p>
+          </td>
+          <td>
+            <p>Steepness-limited height:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="H_max" value="22.3" disabled tabindex="4"> </td>
+          <td>
+            <p>(m)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <p>Regime:</p>
+          </td>
+          <td colspan="2">
+            <input class="form-control" style="width:8em" type="text" name="regime" value="deep" disabled tabindex="5"> </td>
+          <td>
+            <p></p>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+  </div>
+</body>
+
+</html>

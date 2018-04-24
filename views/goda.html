@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>water-tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="../css/kickstart.min.css" rel="stylesheet">
+  <link href="../css/extras.css" rel="stylesheet">
+  <link href="../img/favicon.png" rel="shortcut icon">
+  <script src="../js/kickstart.min.js"></script>
+  <script src="../js/calculators.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']], displayMath: [['$$','$$']], processEscapes: true } });
+  </script>
+
+  <div data-ks-navbar class="navbar">
+    <nav>
+      <ul>
+        <li class="navbar-title">
+          <h1>water-tools</h1>
+          <button role="button">=</button>
+        </li>
+        <li class="active">Waves
+          <ul>
+            <li><a href="hunt.html">Gravity wave dispersion (Hunt, 1979)</a></li>
+            <li><a href="goda.html">Breaker index (Goda, 2010)</a></li>
+          </ul>
+        </li>
+        <li class="active">Armour
+          <ul>
+            <li><a href="hudson.html">Breakwater armour sizing (Hudson, 1959)</a></li>
+            <li><a href="sharp-khader.html">Armour mass in fresh water (Sharp & Khader, 1984)</a></li>
+          </ul>
+        </li>
+        <li class="active">Scaling
+          <ul>
+            <li><a href="froude.html">Froude similarity</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</head>
+
+<body>
+  <div id="goda">
+    <h3>Goda breaker index</h3>
+
+    <p>$\gamma = \frac{H_{b, 1/3}}{d_b} = \frac{0.12}{d_b / L_0} \left\{ 1 - \exp \left[ -1.5 \pi \frac{d_b}{L_0} (1 + 11 s^{4/3}) \right]\right\}$
+    </p>
+
+    <p>$L_0 = \frac{g T^2}{2 \pi}$
+    </p>
+
+    <form name="Goda">
+      <table>
+        <tr>
+          <td>
+            <p>$d_b$ &nbsp</p>
+          </td>
+          <td>
+            <p>Water depth:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="d_b" value="5" tabindex="1" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+          <td>
+            <p>(m)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$T$</p>
+          </td>
+          <td>
+            <p>Wave period:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="T" value="10" tabindex="1" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+          <td>
+            <p>(s)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$s$</p>
+          </td>
+          <td>
+            <p>Slope:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="s" value="0.01" tabindex="3" onkeyup="godaCalculateBreakerIndex(this.form)"> </td>
+          <td>
+            <p>(H/V)</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>$\gamma$</p>
+          </td>
+          <td>
+            <p>Breaker index:</p>
+          </td>
+          <td>
+            <input class="form-control" type="text" name="gamma" value="0.54" disabled tabindex="4"> </td>
+          <td>
+            <p>(-)</p>
+          </td>
+      </table>
+    </form>
+  </div>
+</body>
+
+</html>
